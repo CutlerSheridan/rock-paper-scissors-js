@@ -1,4 +1,4 @@
-# Rock Paper Scissors game in Javascript
+# Rock Paper Scissors game in JavaScript
 Purely a console app for now
 
 I altered the instructions and instead made it so:  

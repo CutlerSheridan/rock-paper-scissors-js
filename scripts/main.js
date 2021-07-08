@@ -1,5 +1,5 @@
-let playerRoundWins;
-let compRoundWins;
+let playerRoundWins = 0;
+let compRoundWins = 0;
 let playerGameWins = 0;
 let compGameWins = 0;
 let totalGames = 0;
