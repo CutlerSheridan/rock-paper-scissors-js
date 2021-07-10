@@ -4,12 +4,60 @@
   <link href="styles/style.css" rel="stylesheet">
   <title>Rock Paper Scissors</title>
   <meta charset="UTF-8"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Codystar&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div id="comp-hand">
-    <img src="images/fist-downward.png" alt="a hand displaying the computer's move">
+  <!--<div class="results-div">
+    <div class="text-test">Games are won by the first to achieve three wins.</div>
+    <br>
+    <div id="player-rounds" class="text-test">player round results test</div>
+    <div id="comp-rounds" class="text-test">comp round results test</div>
+    <br>
+    <div id="results" class="text-test">Choose your move</div>
+    <br>
+    <div id="games-total" class="text-test">game totals</div>
+    <br>
+    <button id="reset-button">Reset</button>
+  </div>-->
+
+  <div id="scoreboard">
+    <div id="player-side" class="scores-div">
+      <h1 id="player-name" class="identification">PLAYER</h1>
+      <hr>
+      <div class="games-line-div">
+        <span class="games-label">GAMES</span>
+        <span id="player-games" class="games-won">0</span>
+      </div>
+      <span class="rounds-label">ROUNDS</span>
+      <div class="rounds-line-div">
+        <span id="player-rounds" class="rounds-won">0</span>
+        <span class="total-rounds"> / 3 </span>
+      </div>
+    </div>
+    <div id="scoreboard-filler"></div>
+    <div id="comp-side" class="scores-div">
+      <h1 class="identification">COMP.</h1>
+      <hr>
+      <div class="games-line-div">
+        <span class="games-label">GAMES</span>
+        <span id="comp-games" class="games-won">0</span>
+      </div>
+      <span class="rounds-label">ROUNDS</span>
+      <div class="rounds-line-div">
+        <span id="comp-rounds" class="rounds-won">0</span>
+        <span class="total-rounds"> / 3 </span>
+      </div>
+    </div>
   </div>
+
+  <div id="comp-hand">
+    <img src="images/fist-upright.png" alt="a hand displaying the computer's move">
+  </div>
+
+
 
   <div id="player-hands">
     <div class="hand">
@@ -22,6 +70,6 @@
       <img src="images/scissors-upright.png" alt="a hand making the scissors sign">
     </div>
   </div>
-  <!--<script src="scripts/main.js"></script>-->
+  <script src="scripts/main.js"></script>
 </body>
 </html>

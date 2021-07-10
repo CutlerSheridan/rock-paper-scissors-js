@@ -1,5 +1,14 @@
 :root {
+    --clr-player-hand: transparent;
+    --clr-comp-hand: transparent;
+    --clr-yellow: rgb(243, 229, 40);
+    --clr-red: rgb(170, 0, 0);
+    --clr-green: rgb(35, 136, 35);
+    --clr-grey: rgb(71,71,71);
+    --clr-off-white: rgb(209, 209, 209);
+    --line-width: 5px;
     font-size: 10px;
+    background: var(--clr-grey);
 }
 
 * {
@@ -14,15 +23,113 @@ body {
     width: 100%;
     overflow: none;
 }
+/*--TEXT TEST START--*/
+.results-div {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 5rem;
+    text-align: right;
+    justify-content: flex-end;
+    align-items: flex-end;
+    left: 3rem;
+    top: 3rem;
+    font-size: 1.2rem;
+    color: white;
+}
+/*--TEXT TEST END--*/
+
+/*--SCOREBOARD START--*/
+#scoreboard {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 2.2rem;
+    font-family: arial;
+    color: white;
+    padding: 5rem 5rem;
+}
+.scores-div {
+    display: flex;
+    flex-direction: column;
+    width: 18em;
+    text-align: center;
+    border-radius: .25rem;
+    box-shadow: 0 0 1rem .05rem rgba(0,0,0,1);
+    padding: 2rem;
+    background: rgb(43, 43, 43);
+    flex-shrink: 1;
+}
+#scoreboard-filler {
+    width: 18rem;
+    flex-shrink: 0;
+}
+.identification {
+    font-size: 3.5em;
+}
+.games-line-div,
+.rounds-line-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    white-space: pre;
+}
+.games-won,
+.rounds-won {
+    display: block;
+    margin: 0 1rem;
+    background: black;
+    color: var(--clr-yellow);
+    font-family: "Codystar", cursive;
+    border: .2rem solid grey;
+}
+.games-won {
+    width: 7rem;
+    padding: 1rem .75rem;
+    text-align: right;
+}
+.rounds-won {
+    width: 10rem;
+    text-align: center;
+}
+.rounds-label {
+    margin-top: 1rem;
+    font-size: 3em;
+}
+.rounds-line-div {
+    font-size: 10rem;
+}
+
+/*--SCOREBOARD END--*/
+
 /*--COMPUTER'S HAND START--*/
 #comp-hand {
     height: 50%;
     width: 100%;
+    filter: drop-shadow(var(--line-width) var(--line-width) 0 var(--clr-comp-hand))
+            drop-shadow(var(--line-width) calc(-1 * var(--line-width)) 0 var(--clr-comp-hand))
+            drop-shadow(calc(-1 * var(--line-width)) var(--line-width) 0 var(--clr-comp-hand))
+            drop-shadow(calc(-1 * var(--line-width)) calc(-1 * var(--line-width)) 0 var(--clr-comp-hand));
 }
 #comp-hand > img {
     display: block;
-    max-height: 50vh;
+    max-height: 47.5vh;
     margin: auto;
+    transform: rotate(180deg);
+}
+.moving-fist {
+    animation: .3s ease 4 movingfist;
+}
+@keyframes movingfist {
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 /*--COMPUTER'S HAND END--*/
 
@@ -33,11 +140,28 @@ body {
     align-items: flex-end;
     height: 50%;
 }
+.hand {
+    transition: all .07s ease;
+    cursor: pointer;
+}
 .hand > img {
     display: block;
     max-width: 100%;
     max-height: 50vh;
     margin: auto;
-    transition: all .07s ease;
+}
+/* Javascript-added classes below */
+.selected-hand {
+    transform: scale(1.1);
+    opacity: 100%;
+}
+.unselected-hand {
+    opacity: 50%;
+}
+.clicked-hand {
+    filter: drop-shadow(var(--line-width) var(--line-width) 0 var(--clr-player-hand))
+            drop-shadow(var(--line-width) calc(-1 * var(--line-width)) 0 var(--clr-player-hand))
+            drop-shadow(calc(-1 * var(--line-width)) var(--line-width) 0 var(--clr-player-hand))
+            drop-shadow(calc(-1 * var(--line-width)) calc(-1 * var(--line-width)) 0 var(--clr-player-hand));
 }
 /*--PLAYER'S HAND END--*/
