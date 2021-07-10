@@ -1,5 +1,5 @@
 # Rock Paper Scissors game in JavaScript
-Purely a console app for now
+Now a GUI app!
 
 I altered the instructions and instead made it so:  
 * each game consists of three rounds
