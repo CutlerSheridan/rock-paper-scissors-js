@@ -56,15 +56,20 @@ body {
     flex-direction: column;
     width: 18em;
     text-align: center;
-    border-radius: .25rem;
+    border: 5px solid white;
+    border-radius: .5rem;
     box-shadow: 0 0 1rem .05rem rgba(0,0,0,1);
     padding: 2rem;
     background: rgb(43, 43, 43);
     flex-shrink: 1;
 }
-#scoreboard-filler {
-    width: 18rem;
-    flex-shrink: 0;
+#player-side {
+    margin-left: 5%;
+    margin-right: 12rem;
+}
+#comp-side {
+    margin-left: 12rem;
+    margin-right: 5%;
 }
 .identification {
     font-size: 3.5em;
@@ -85,6 +90,7 @@ body {
     color: var(--clr-yellow);
     font-family: "Codystar", cursive;
     border: .2rem solid grey;
+    text-shadow: 0 0 6px red;
 }
 .games-won {
     width: 7rem;
