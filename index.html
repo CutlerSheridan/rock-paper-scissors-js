@@ -10,19 +10,6 @@
 </head>
 
 <body>
-  <!--<div class="results-div">
-    <div class="text-test">Games are won by the first to achieve three wins.</div>
-    <br>
-    <div id="player-rounds" class="text-test">player round results test</div>
-    <div id="comp-rounds" class="text-test">comp round results test</div>
-    <br>
-    <div id="results" class="text-test">Choose your move</div>
-    <br>
-    <div id="games-total" class="text-test">game totals</div>
-    <br>
-    <button id="reset-button">Reset</button>
-  </div>-->
-
   <div id="scoreboard">
     <div id="player-side" class="scores-div">
       <h1 id="player-name" class="identification">PLAYER</h1>
@@ -37,7 +24,7 @@
         <span class="total-rounds"> / 3 </span>
       </div>
     </div>
-    
+
     <div id="comp-side" class="scores-div">
       <h1 class="identification">COMP.</h1>
       <hr>
@@ -68,6 +55,17 @@
     </div>
     <div class="hand">
       <img src="images/scissors-upright.png" alt="a hand making the scissors sign">
+    </div>
+  </div>
+
+  <div class="game-results-flex">
+    <div class="game-results-banner">
+      <span class="game-results-text">YOU WON!</span>
+      <div class="play-again-line">
+        <span class="play-again-text">PLAY AGAIN?</span>
+        <button id="play-again-button">YES</button>
+        <button id="reset-button">NO</button>
+      </div>
     </div>
   </div>
   <script src="scripts/main.js"></script>

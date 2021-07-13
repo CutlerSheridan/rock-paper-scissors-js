@@ -1,4 +1,9 @@
 //MAIN LOGIC START
+console.log("Written by Cutler Sheridan");
+console.log("Copyright 2021");
+console.log(" ");
+console.log("Bottom three hand photos by Sertion - Photos by Fluff, modified by Sertion, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6867678");
+
 let playerRoundWins = 0;
 let compRoundWins = 0;
 let playerGameWins = 0;
@@ -19,6 +24,8 @@ const compHandImg = document.querySelector("#comp-hand>img");
 const playerHandsNodes = document.querySelectorAll(".hand");
 const playerHands = Array.from(playerHandsNodes);
 const handSector = document.querySelector("#player-hands");
+const gameResultsFlex = document.querySelector(".game-results-flex");
+const gameResultsBanner = document.querySelector(".game-results-banner");
 
 playerHands.forEach(hand => hand.addEventListener("mouseenter", hoverHand));
 handSector.addEventListener("mouseleave", unselectAllHands);
@@ -26,6 +33,8 @@ handSector.addEventListener("mouseleave", unselectAllHands);
 playerHands.forEach(hand => hand.addEventListener("click", moveFist));
 playerHands.forEach(hand => hand.addEventListener("click", toggleHandOutline));
 compHand.addEventListener("animationend", playRound);
+
+document.querySelector("#play-again-button").addEventListener("click", resetRounds);
 document.querySelector("#reset-button").addEventListener("click", resetGame);
 //MAIN LOGIC END
 
@@ -140,46 +149,65 @@ function getAndShowResults(outcome) {
     updateRounds();
     switch (outcome) {
         case "win":
-            //resultsText.textContent = `You won this `;
             if (playerRoundWins === 3) {
                 playerGameWins++;
                 totalGames++;
-                //resultsText.textContent += "game!!!";
-            } else {
-                //resultsText.textContent += "round!";
+                showGameOutcome("yes");
             }
-            changeOutlineColor("win");
+            changeOutlineColor(outcome);
             break;
         case "lose":
-            //resultsText.textContent = "You lost this ";
             if (compRoundWins === 3) {
                 compGameWins++;
                 totalGames++;
-                //resultsText.textContent += "game. :(";
-            } else {
-                //resultsText.textContent += "round.";
+                showGameOutcome("yes");
             }
-            changeOutlineColor("lose");
+            changeOutlineColor(outcome);
             break;
         case "tie":
-            //resultsText.textContent = "You tied this round.";
-            changeOutlineColor("tie");
+            changeOutlineColor(outcome);
             break;
     }
     updateGames();
 }
+function showGameOutcome(yesOrNo) {
+    if (yesOrNo === "yes") {
+        const bannerText = document.querySelector(".game-results-text");
+        if (playerRoundWins > compRoundWins) {
+            bannerText.textContent = "YOU WON!";
+        } else {
+            bannerText.textContent = "YOU LOST";
+        }
+        gameResultsFlex.style.left = "0";
+        gameResultsBanner.style.left = "0";
+        gameResultsFlex.style.background= "rgba(71,71,71, .4)";
+    } else {
+        gameResultsFlex.addEventListener("transitionend", removeBanner);
+        gameResultsFlex.style.background = "transparent";
+        gameResultsBanner.style.left = "5000px";
+    }
+}
+function removeBanner() {
+    gameResultsFlex.style.left = "-10000px";
+    gameResultsFlex.removeEventListener("transitionend", removeBanner);
+    gameResultsBanner.style.left = "-5000px";
+}
 function resetGame() {
-    playerRoundWins = 0;
     playerGameWins = 0;
-    compRoundWins = 0;
     compGameWins = 0;
     totalGames = 0;
 
-    updateRounds();
+    resetRounds();
     updateGames();
-    toggleHandOutline();
-    resultsText.textContent = "Choose your move.";
+}
+function resetRounds() {
+    playerRoundWins = 0;
+    compRoundWins = 0;
+
+    updateRounds();
+    changeOutlineColor("reset");
     compHandImg.setAttribute("src", compMoves[3]);
+    showGameOutcome("no");
 }
 function updateRounds() {
     playerRounds.textContent = playerRoundWins;
@@ -205,3 +233,5 @@ function pluralize(numOfItems) {
 // GAME LOGIC END
 
 // ADD SOMETHING WHERE USER CAN CLICK "PLAYER" AND CHANGE IT TO USER'S NAME
+// MAKE RESPONSIVE
+// ADD AN "ABOUT" BUTTON INSTEAD OF JUST LOGGING IN THE CONSOLE?

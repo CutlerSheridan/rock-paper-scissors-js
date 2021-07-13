@@ -1,11 +1,15 @@
 :root {
     --clr-player-hand: transparent;
     --clr-comp-hand: transparent;
-    --clr-yellow: rgb(243, 229, 40);
+    --clr-yellow-nums: 238,222,3;
+    --clr-yellow: rgb(var(--clr-yellow-nums));
+    --clr-yellow-dark: rgb(224, 147, 5);
     --clr-red: rgb(170, 0, 0);
     --clr-green: rgb(35, 136, 35);
-    --clr-grey: rgb(71,71,71);
-    --clr-off-white: rgb(209, 209, 209);
+    --clr-grey-nums: 71,71,71;
+    --clr-grey: rgb(var(--clr-grey-nums));
+    --clr-off-white: rgb(228, 228, 228);
+    --clr-off-white-nums: 209, 209, 209;
     --line-width: 5px;
     font-size: 10px;
     background: var(--clr-grey);
@@ -21,24 +25,8 @@ html,
 body {
     height: 100%;
     width: 100%;
-    overflow: none;
+    overflow: hidden;
 }
-/*--TEXT TEST START--*/
-.results-div {
-    display: flex;
-    position: absolute;
-    flex-direction: column;
-    width: 100%;
-    margin-right: 5rem;
-    text-align: right;
-    justify-content: flex-end;
-    align-items: flex-end;
-    left: 3rem;
-    top: 3rem;
-    font-size: 1.2rem;
-    color: white;
-}
-/*--TEXT TEST END--*/
 
 /*--SCOREBOARD START--*/
 #scoreboard {
@@ -63,6 +51,7 @@ body {
     background: rgb(43, 43, 43);
     flex-shrink: 1;
 }
+
 #player-side {
     margin-left: 5%;
     margin-right: 12rem;
@@ -89,7 +78,7 @@ body {
     background: black;
     color: var(--clr-yellow);
     font-family: "Codystar", cursive;
-    border: .2rem solid grey;
+    border: .2rem solid var(--clr-off-white);
     text-shadow: 0 0 6px red;
 }
 .games-won {
@@ -171,3 +160,71 @@ body {
             drop-shadow(calc(-1 * var(--line-width)) calc(-1 * var(--line-width)) 0 var(--clr-player-hand));
 }
 /*--PLAYER'S HAND END--*/
+
+/*--POP-UP ELEMENTS START--*/
+.game-results-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: -10000px;
+    z-index: 1000;
+    height: 100%;
+    width: 100%;
+    transition: background .3s ease;
+    background: transparent;
+}
+.game-results-banner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    left: -5000px;
+    color: var(--clr-off-white);
+    font-family: arial;
+    background: rgba(41,41,41, .95);
+    border: .7rem solid var(--clr-off-white);
+    border-right-width: 0;
+    border-left-width: 0;
+    transition: left .4s linear;
+}
+.game-results-text {
+    margin-top: 1.7rem;
+    font-size: 20em;
+    font-weight: bold;
+}
+.play-again-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4.5rem;
+}
+.play-again-text {
+    font-size: 7.5em;
+}
+button {
+    margin-left: 3rem;
+    padding: 1.65rem 1.2rem 1.65rem 2rem;
+    font-size: 3.5em;
+    letter-spacing: .2em;
+    text-align: center;
+    cursor: pointer;
+    background: black;
+    color: var(--clr-yellow);
+    font-family: "Codystar", cursive;
+    border: .2rem solid var(--clr-off-white);
+    text-shadow: 0 0 20px red;
+}
+button:hover,
+button:active {
+    transform: scale(1.1);
+    outline: none;
+}
+#reset-button {
+    color: grey;
+    text-shadow: none;
+}
+/*--POP-UP ELEMENTS END--*/
